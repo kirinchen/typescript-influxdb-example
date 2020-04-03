@@ -1,0 +1,6 @@
+/node_modules
+/obj
+/.vs
+/bin
+/coverage
+/lib

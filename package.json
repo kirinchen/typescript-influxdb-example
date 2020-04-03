@@ -1,0 +1,32 @@
+{
+  "name": "typescript-influxdb-example",
+  "version": "0.0.0",
+  "description": "typescript-influxdb-example",
+  "main": "lib/app.js",
+  "types": "lib/app.d.ts",
+  "author": {
+    "name": ""
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "clean": "tsc --build --clean",
+    "test": "jest --config jestconfig.json"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@types/node": "^8.0.14",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.1.0",
+    "tslint": "^6.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.1.0",
+    "daemon": "^1.1.0",
+    "npm": "^6.14.4"
+  }
+}
