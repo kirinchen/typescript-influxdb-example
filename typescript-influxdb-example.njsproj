@@ -34,11 +34,13 @@
   <ItemGroup>
     <None Include="app.ts" />
     <Content Include="jestconfig.json" />
+    <Content Include="myconfig\typescript-influxdb-example.env" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="myconfig\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
