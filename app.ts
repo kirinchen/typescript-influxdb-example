@@ -13,26 +13,24 @@ const client = new InfluxDB({ url: process.env.influxdata_url, token: process.en
 
 console.log('Hello world');
 
-const writeApi = client.getWriteApi('0d8d34b36826efb3', 'Test')
+const writeApi = client.getWriteApi(process.env.influxdata_org, process.env.influxdata_bucket);
 
-console.log('*** WRITE POINTS ***')
+console.log('*** WRITE POINTS ***');
 
 // setup default tags for all writes through this API
 writeApi.useDefaultTags({ location: hostname() })
 
 const dateTime = new Date().getTime();
-const timestamp  = Math.floor(dateTime / 1000);
-const point1 = new Point('temperature')
-    .timestamp(timestamp +'')
-    .tag('example', 'Change Timestamp')
-    .floatField('value', 20 + Math.round(100 * Math.random()) / 10)
-writeApi.writePoint(point1)
-console.log(` ${point1}`)
-const point2 = new Point('temperature')
-    .tag('example', 'write.ts')
-    .floatField('value', 10 + Math.round(100 * Math.random()) / 10)
-writeApi.writePoint(point2)
-console.log(` ${point2}`)
+for (let i = 0; i < 100; i++) {
+    const timestamp = (dateTime-(i*9000000)) * 1000000; //Math.floor(dateTime / 1000);
+    const point1 = new Point('temperature')
+        .timestamp(timestamp + '')
+        .tag('example', 'TestVal')
+        .floatField('value', i + Math.round(100 * Math.random()) / 10);
+    writeApi.writePoint(point1);
+    console.log(` ${point1}`);
+}
+
 
 // flush pending writes and close writeApi
 writeApi
