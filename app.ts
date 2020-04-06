@@ -36,7 +36,8 @@ for (let i = 0; i < 100; i++) {
 writeApi
     .close()
     .then(() => {
-        console.log('FINISHED ... now try ./query.ts')
+        console.log('FINISHED ... now try ./query.ts');
+        query();
     })
     .catch(e => {
         console.error(e)
@@ -53,7 +54,7 @@ writeApi
 function query() {
 
     const fluxQuery =
-        'from(bucket:"Test") |> range(start: -15m, stop: now()) '
+        'from(bucket:"Test") |> range(start: -1500d, stop: now()) '
     const queryApi = client.getQueryApi('0d8d34b36826efb3')
     console.log('*** QUERY ROWS ***')
     // performs query and receive line table metadata and rows
